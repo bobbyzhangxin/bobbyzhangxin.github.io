@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="bobbyzhangxin">
 <meta property="og:description" content="#前言前端的学习注重于基础，今天给大家带来几个CSS3的技巧，利用CSS3的新特性来制作几个好玩的DEMO学习资源来自于慕课*html部分：123&amp;lt;body&amp;gt;    &amp;lt;a href=&amp;quot;www.baidu.com&amp;quot; class=&amp;quot;change &amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;h">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-01T05:37:51.113Z">
+<meta property="og:updated_time" content="2018-02-01T05:40:27.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3技巧1">
 <meta name="twitter:description" content="#前言前端的学习注重于基础，今天给大家带来几个CSS3的技巧，利用CSS3的新特性来制作几个好玩的DEMO学习资源来自于慕课*html部分：123&amp;lt;body&amp;gt;    &amp;lt;a href=&amp;quot;www.baidu.com&amp;quot; class=&amp;quot;change &amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;h">
@@ -333,8 +333,8 @@
         <p>#前言<br>前端的学习注重于基础，今天给大家带来几个CSS3的技巧，利用CSS3的新特性来制作几个好玩的DEMO<br>学习资源来自于<a href="https://www.imooc.com/" target="_blank" rel="external">慕课</a><br>*html部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;a href=&quot;www.baidu.com&quot; class=&quot;change &quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;http://p4.qhimg.com/t0160e6a92121691e22.png&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">*css部分：</span><br><span class="line">body&#123;</span><br><span class="line">            color: #fff;</span><br><span class="line">            background: #000;</span><br><span class="line">        &#125;</span><br><span class="line">        .change&#123;</span><br><span class="line">            display: block;</span><br><span class="line">            width: 400px;</span><br><span class="line">            height: 400px;</span><br><span class="line">            background: url(http://p3.qhimg.com/t0134c65e59012a1257.png) no-repeat center;</span><br><span class="line">            background-size: cover;</span><br><span class="line">            border:1em solid rgba(255,255,255,.8);</span><br><span class="line">            margin: 50px auto;</span><br><span class="line">        &#125;</span><br><span class="line">        .change img&#123;</span><br><span class="line">            display: block;</span><br><span class="line">            width: 300px;</span><br><span class="line">            height: 284px;</span><br><span class="line">            opacity: 0;</span><br><span class="line">            -webkit-transform: translate(-100px,-100px);</span><br><span class="line">            -webkit-transition: opacity 1s ease-in-out 0.5s,</span><br><span class="line">            -webkit-transform 1s ease-in-out;</span><br><span class="line">            transition: opacity 1s ease-in-out 0.5s,transform 1s ease-in-out;</span><br><span class="line">        &#125;</span><br><span class="line">        .change:hover img&#123;</span><br><span class="line">            -webkit-transform:translate(0px,0px);</span><br><span class="line">            opacity: 1;</span><br><span class="line">            -webkit-transition: opacity 1s ease-in-out,</span><br><span class="line">            -webkit-transform 1s ease-in-out;</span><br><span class="line">            transition: opacity 1s ease-in-out,transform 1s ease-in-out .1s;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<p>CSS3动画相关的几个属性是：transition, transform, animation；我分别理解为过渡，变换，动画<br>transition:过渡即从a点到b点，需要坐船过度，是有时间性的<br>如例子所示：transition: opacity即指定opacity属性参与此过渡<br>过渡缓冲类型：linear线性过度，ease-in由慢到快，ease-out由快到慢，ease-in-out由慢到快在到慢。<br>transform:变换指一些列的动作，比如旋转缩放，移动等。配合transition就会使动作更加丝滑和酸爽，具体transform的效果API参考W3C，菜鸟教程等学习网站</p>
-<h2 id="animation最先安家于Safari浏览器，自成一家，与transition和transform有老死不相往来之感，但是要说单挑的话，animation要比transition厉害些。"><a href="#animation最先安家于Safari浏览器，自成一家，与transition和transform有老死不相往来之感，但是要说单挑的话，animation要比transition厉害些。" class="headerlink" title="animation最先安家于Safari浏览器，自成一家，与transition和transform有老死不相往来之感，但是要说单挑的话，animation要比transition厉害些。"></a>animation最先安家于Safari浏览器，自成一家，与transition和transform有老死不相往来之感，但是要说单挑的话，animation要比transition厉害些。</h2>
+<p>CSS3动画相关的几个属性是：transition, transform, animation；我分别理解为过渡，变换，动画<br>1.transition:过渡即从a点到b点，需要坐船过度，是有时间性的<br>如例子所示：transition: opacity即指定opacity属性参与此过渡<br>过渡缓冲类型：linear线性过度，ease-in由慢到快，ease-out由快到慢，ease-in-out由慢到快在到慢。<br>2.transform:变换指一些列的动作，比如旋转缩放，移动等。配合transition就会使动作更加丝滑和酸爽，具体transform的效果API参考W3C，菜鸟教程等学习网站<br>3.animation最先安家于Safari浏览器，自成一家，与transition和transform有老死不相往来之感，但是要说单挑的话，animation要比transition厉害些。</p>
+
       
     </div>
     
@@ -419,17 +419,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -473,22 +464,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#animation最先安家于Safari浏览器，自成一家，与transition和transform有老死不相往来之感，但是要说单挑的话，animation要比transition厉害些。"><span class="nav-number">1.</span> <span class="nav-text">animation最先安家于Safari浏览器，自成一家，与transition和transform有老死不相往来之感，但是要说单挑的话，animation要比transition厉害些。</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
