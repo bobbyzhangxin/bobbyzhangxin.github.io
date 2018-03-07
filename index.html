@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            Über
+            About
           </a>
         </li>
       
@@ -213,7 +213,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -260,6 +260,129 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/事件流2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张大欣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bobbyzhangxin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/07/事件流2/" itemprop="url">事件流2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T21:21:17+08:00">
+                2018-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="事件流之事件捕获"><a href="#事件流之事件捕获" class="headerlink" title="事件流之事件捕获"></a>事件流之事件捕获</h1><p>昨天晚上我细想了一个非常好理解的方法来记住什么是事件冒泡和事件捕获，你想象你在钓鱼，你从外面将鱼钩甩进湖里，捕到鱼了这不就是从外面逐级向下伸进湖里嘛，鱼从湖里挣扎的时候吐泡泡不就是所谓的事件冒泡吗？从里逐级向上被你钓出来，美滋滋<br>其实事件捕获和事件冒泡正好相反，在事件捕获的过程中，document对象首先接到click事件，然后事件沿着DOM树依次向下，一直传播到事件的实际目标<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;bubble&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        button&#123;</span><br><span class="line">            background: red;</span><br><span class="line">            color:white;</span><br><span class="line">        &#125;</span><br><span class="line">        #third&#123;</span><br><span class="line">            width: 50px;</span><br><span class="line">            height: 50px;</span><br><span class="line">            border:thin solid red;</span><br><span class="line">        &#125;</span><br><span class="line">        #second&#123;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 100px;</span><br><span class="line">            border:thin solid red;</span><br><span class="line">        &#125;</span><br><span class="line">        #first&#123;</span><br><span class="line">            width:200px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            border:thin solid red;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;first&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;second&quot; &gt;</span><br><span class="line">            &lt;div id=&quot;third&quot; &gt;</span><br><span class="line">                &lt;button id=&quot;button&quot;&gt;事件冒泡&lt;/button&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line"></span><br><span class="line">        document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;button&quot;);</span><br><span class="line">        &#125;,true);</span><br><span class="line"></span><br><span class="line">        document.getElementById(&quot;third&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;third&quot;);</span><br><span class="line">        &#125;,true);</span><br><span class="line"></span><br><span class="line">        document.getElementById(&quot;second&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;second&quot;);</span><br><span class="line">        &#125;,true);        </span><br><span class="line"></span><br><span class="line">        document.getElementById(&quot;first&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;first&quot;);</span><br><span class="line">        &#125;,true);</span><br><span class="line"></span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://images2015.cnblogs.com/blog/1044137/201612/1044137-20161207090444788-1400193554.gif" target="_blank" rel="external">示例图点击可看</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">document</span><br><span class="line">&lt;html&gt;&lt;/html&gt;</span><br><span class="line">&lt;body&gt;&lt;/body&gt;</span><br><span class="line">&lt;div id=&quot;first&quot; &gt;&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;second&quot; &gt;&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;third&quot; &gt;&lt;/div&gt;</span><br><span class="line">&lt;button id=&quot;button&quot;&gt;&lt;/button&gt;可以清楚的看出事件的发生顺序从上之下逐级发生</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="学习无止尽，努力吧，骚年！"><a href="#学习无止尽，努力吧，骚年！" class="headerlink" title="学习无止尽，努力吧，骚年！"></a>学习无止尽，努力吧，骚年！</h1>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/事件流/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -289,7 +412,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T23:18:38+08:00">
                 2018-03-06
@@ -331,9 +454,9 @@
       
         
           
-            <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><p>Javascript高级程序设计是本好书<a href="https://item.jd.com/10951037.html" target="_blank" rel="external">购买链接</a>(不是打广告，真心觉得好，嘿嘿嘿)<br>最近一直在复习面试笔试题，感觉归根结底还是要把基础打牢，今天来聊聊JS中的事件流，其实理解起来很容易，想象一张A4纸上画了很一组同心圆，你把手指放在圆心上，我问你你指的是哪个圆呢？你指的是纸上的所有圆。在实际开发中，你单击某个按钮，他们认为单击事件不仅仅发生在按钮上，换句话说，在单击按钮的时候你还单击了按钮的容器元素，也单击了整个页面。<br>事件流的描述就是从页面中接受事件的顺序。</p>
+            <h1 id="事件流之事件冒泡"><a href="#事件流之事件冒泡" class="headerlink" title="事件流之事件冒泡"></a>事件流之事件冒泡</h1><p>Javascript高级程序设计是本好书<a href="https://item.jd.com/10951037.html" target="_blank" rel="external">购买链接</a>(不是打广告，真心觉得好，嘿嘿嘿)<br>最近一直在复习面试笔试题，感觉归根结底还是要把基础打牢，今天来聊聊JS中的事件流，其实理解起来很容易，想象一张A4纸上画了很一组同心圆，你把手指放在圆心上，我问你你指的是哪个圆呢？你指的是纸上的所有圆。在实际开发中，你单击某个按钮，他们认为单击事件不仅仅发生在按钮上，换句话说，在单击按钮的时候你还单击了按钮的容器元素，也单击了整个页面。<br>事件流的描述就是从页面中接受事件的顺序。</p>
 <h2 id="1-事件冒泡"><a href="#1-事件冒泡" class="headerlink" title="1.事件冒泡"></a>1.事件冒泡</h2><p>IE的事件流叫做事件冒泡，即事件开始时由最具体的页面元素接受再逐级向上传播到较为不具体的节点，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;bubble&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        button&#123;</span><br><span class="line">            background: red;</span><br><span class="line">            color:white;</span><br><span class="line">        &#125;</span><br><span class="line">        #third&#123;</span><br><span class="line">            width: 50px;</span><br><span class="line">            height: 50px;</span><br><span class="line">            border:thin solid red;</span><br><span class="line">        &#125;</span><br><span class="line">        #second&#123;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 100px;</span><br><span class="line">            border:thin solid red;</span><br><span class="line">        &#125;</span><br><span class="line">        #first&#123;</span><br><span class="line">            width:200px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            border:thin solid red;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;first&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;second&quot; &gt;</span><br><span class="line">            &lt;div id=&quot;third&quot; &gt;</span><br><span class="line">                &lt;button id=&quot;button&quot;&gt;事件冒泡&lt;/button&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line"></span><br><span class="line">        document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;button&quot;);</span><br><span class="line">        &#125;,false);</span><br><span class="line"></span><br><span class="line">        document.getElementById(&quot;third&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;third&quot;);</span><br><span class="line">        &#125;,false);</span><br><span class="line"></span><br><span class="line">        document.getElementById(&quot;second&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;second&quot;);</span><br><span class="line">        &#125;,false);        </span><br><span class="line"></span><br><span class="line">        document.getElementById(&quot;first&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;first&quot;);</span><br><span class="line">        &#125;,false);</span><br><span class="line"></span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://images2015.cnblogs.com/blog/1044137/201612/1044137-20161207085602601-322563462.gif" alt=""><br>单击了页面中的div元素，那么这个click事件就按照如下顺序传播<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.&lt;button id=&quot;button&quot;&gt;&lt;/button&gt;</span><br><span class="line">2.&lt;div id=&quot;third&quot; &gt;&lt;/div&gt;</span><br><span class="line">3.&lt;div id=&quot;second&quot; &gt;&lt;/div&gt;</span><br><span class="line">4.&lt;div id=&quot;first&quot; &gt;&lt;/div&gt;</span><br><span class="line">5.&lt;body&gt;&lt;/body&gt;</span><br><span class="line">6.&lt;html&gt;&lt;/html&gt;</span><br><span class="line">7.document</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://images2015.cnblogs.com/blog/1044137/201612/1044137-20161207085602601-322563462.gif" target="_blank" rel="external">示例图点击可看</a><br>单击了页面中的div元素，那么这个click事件就按照如下顺序传播<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.&lt;button id=&quot;button&quot;&gt;&lt;/button&gt;</span><br><span class="line">2.&lt;div id=&quot;third&quot; &gt;&lt;/div&gt;</span><br><span class="line">3.&lt;div id=&quot;second&quot; &gt;&lt;/div&gt;</span><br><span class="line">4.&lt;div id=&quot;first&quot; &gt;&lt;/div&gt;</span><br><span class="line">5.&lt;body&gt;&lt;/body&gt;</span><br><span class="line">6.&lt;html&gt;&lt;/html&gt;</span><br><span class="line">7.document</span><br></pre></td></tr></table></figure></p>
 <p>也就是说click事件首先在<div>元素上发生，然后我们单击按钮事件发生后，click事件按照DOM树向上传播，直到每个节点发生完<br>DOM2事件处理程序定义了两个方法：addEventListener()和removeEventListener();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;first&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;first&quot;);</span><br><span class="line">        &#125;,false);</span><br></pre></td></tr></table></figure></div></p>
 <p>false表示在冒泡阶段调用事件处理程序，true表示在捕获阶段调用事件处理程序，等下一讲在介绍事件流的另一种形式：事件捕获，敬请期待</p>
 
@@ -414,7 +537,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T20:41:14+08:00">
                 2018-03-06
@@ -537,7 +660,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T18:47:20+08:00">
                 2018-03-06
@@ -667,7 +790,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-05T12:07:55+08:00">
                 2018-03-05
@@ -794,7 +917,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-04T21:31:11+08:00">
                 2018-03-04
@@ -921,7 +1044,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-03T10:48:22+08:00">
                 2018-02-03
@@ -1047,7 +1170,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-01T16:44:22+08:00">
                 2018-02-01
@@ -1173,7 +1296,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-01T13:56:53+08:00">
                 2018-02-01
@@ -1298,7 +1421,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-01T12:55:15+08:00">
                 2018-02-01
@@ -1380,131 +1503,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/14/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张大欣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bobbyzhangxin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/14/hello-world/" itemprop="url">Hello！！！</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-14T10:12:46+08:00">
-                2017-11-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>欢迎来到我的博客，希望你能在这里找到你所想要，得到你所想得</p>
-<h2 id="过得好吗？"><a href="#过得好吗？" class="headerlink" title="过得好吗？"></a>过得好吗？</h2><h3 id="你好陌生人"><a href="#你好陌生人" class="headerlink" title="你好陌生人"></a>你好陌生人</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">welcome to my house</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1548,8 +1553,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             

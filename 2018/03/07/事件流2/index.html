@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="我身在何处？题目详情：先给数组排序，然后找到指定的值在数组的位置，最后返回位置对应的索引。 举例：where([1,2,3,4], 1.5) 应该返回 1。因为1.5插入到数组[1,2,3,4]后变成[1,1.5,2,3,4]，而1.5对应的索引值就是1。 同理，where([20,3,5], 19) 应该返回 2。因为数组会先排序为 [3,5,20]，19插入到数组[3,5,20]后变成[3,5">
+<meta name="description" content="事件流之事件捕获昨天晚上我细想了一个非常好理解的方法来记住什么是事件冒泡和事件捕获，你想象你在钓鱼，你从外面将鱼钩甩进湖里，捕到鱼了这不就是从外面逐级向下伸进湖里嘛，鱼从湖里挣扎的时候吐泡泡不就是所谓的事件冒泡吗？从里逐级向上被你钓出来，美滋滋其实事件捕获和事件冒泡正好相反，在事件捕获的过程中，document对象首先接到click事件，然后事件沿着DOM树依次向下，一直传播到事件的实际目标123">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS算法(二)">
-<meta property="og:url" content="http://yoursite.com/2018/03/06/JS算法二/index.html">
+<meta property="og:title" content="事件流2">
+<meta property="og:url" content="http://yoursite.com/2018/03/07/事件流2/index.html">
 <meta property="og:site_name" content="bobbyzhangxin">
-<meta property="og:description" content="我身在何处？题目详情：先给数组排序，然后找到指定的值在数组的位置，最后返回位置对应的索引。 举例：where([1,2,3,4], 1.5) 应该返回 1。因为1.5插入到数组[1,2,3,4]后变成[1,1.5,2,3,4]，而1.5对应的索引值就是1。 同理，where([20,3,5], 19) 应该返回 2。因为数组会先排序为 [3,5,20]，19插入到数组[3,5,20]后变成[3,5">
+<meta property="og:description" content="事件流之事件捕获昨天晚上我细想了一个非常好理解的方法来记住什么是事件冒泡和事件捕获，你想象你在钓鱼，你从外面将鱼钩甩进湖里，捕到鱼了这不就是从外面逐级向下伸进湖里嘛，鱼从湖里挣扎的时候吐泡泡不就是所谓的事件冒泡吗？从里逐级向上被你钓出来，美滋滋其实事件捕获和事件冒泡正好相反，在事件捕获的过程中，document对象首先接到click事件，然后事件沿着DOM树依次向下，一直传播到事件的实际目标123">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-06T12:47:16.668Z">
+<meta property="og:updated_time" content="2018-03-07T13:37:16.593Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS算法(二)">
-<meta name="twitter:description" content="我身在何处？题目详情：先给数组排序，然后找到指定的值在数组的位置，最后返回位置对应的索引。 举例：where([1,2,3,4], 1.5) 应该返回 1。因为1.5插入到数组[1,2,3,4]后变成[1,1.5,2,3,4]，而1.5对应的索引值就是1。 同理，where([20,3,5], 19) 应该返回 2。因为数组会先排序为 [3,5,20]，19插入到数组[3,5,20]后变成[3,5">
+<meta name="twitter:title" content="事件流2">
+<meta name="twitter:description" content="事件流之事件捕获昨天晚上我细想了一个非常好理解的方法来记住什么是事件冒泡和事件捕获，你想象你在钓鱼，你从外面将鱼钩甩进湖里，捕到鱼了这不就是从外面逐级向下伸进湖里嘛，鱼从湖里挣扎的时候吐泡泡不就是所谓的事件冒泡吗？从里逐级向上被你钓出来，美滋滋其实事件捕获和事件冒泡正好相反，在事件捕获的过程中，document对象首先接到click事件，然后事件沿着DOM树依次向下，一直传播到事件的实际目标123">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/06/JS算法二/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/07/事件流2/"/>
 
 
 
 
 
-  <title>JS算法(二) | bobbyzhangxin</title>
+  <title>事件流2 | bobbyzhangxin</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/JS算法二/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/事件流2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张大欣">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS算法(二)</h1>
+          <h1 class="post-title" itemprop="name headline">事件流2</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T20:41:14+08:00">
-                2018-03-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T21:21:17+08:00">
+                2018-03-07
               </time>
             
 
@@ -330,10 +330,10 @@
       
 
       
-        <h1 id="我身在何处？"><a href="#我身在何处？" class="headerlink" title="我身在何处？"></a>我身在何处？</h1><p>题目详情：<br>先给数组排序，然后找到指定的值在数组的位置，最后返回位置对应的索引。</p>
-<p>举例：where([1,2,3,4], 1.5) 应该返回 1。因为1.5插入到数组[1,2,3,4]后变成[1,1.5,2,3,4]，而1.5对应的索引值就是1。</p>
-<p>同理，where([20,3,5], 19) 应该返回 2。因为数组会先排序为 [3,5,20]，19插入到数组[3,5,20]后变成[3,5,19,20]，而19对应的索引值就是2。<br>此次的题目不是特别的难，只需用到<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank" rel="external">Array.sort()</a>;<br>综上所述，我们看一下只需两个步骤<br>1.将数值用Array.push()方法添加到数组末尾<br>2.对新数组进行从小到大的排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function where(arr, num) &#123;</span><br><span class="line">  arr.push(num);</span><br><span class="line">  arr= arr.sort(function(a,b)&#123;return a-b;&#125;); </span><br><span class="line">  return arr.indexOf(num);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">where([40, 60], 50);</span><br></pre></td></tr></table></figure></p>
-
+        <h1 id="事件流之事件捕获"><a href="#事件流之事件捕获" class="headerlink" title="事件流之事件捕获"></a>事件流之事件捕获</h1><p>昨天晚上我细想了一个非常好理解的方法来记住什么是事件冒泡和事件捕获，你想象你在钓鱼，你从外面将鱼钩甩进湖里，捕到鱼了这不就是从外面逐级向下伸进湖里嘛，鱼从湖里挣扎的时候吐泡泡不就是所谓的事件冒泡吗？从里逐级向上被你钓出来，美滋滋<br>其实事件捕获和事件冒泡正好相反，在事件捕获的过程中，document对象首先接到click事件，然后事件沿着DOM树依次向下，一直传播到事件的实际目标<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;bubble&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        button&#123;</span><br><span class="line">            background: red;</span><br><span class="line">            color:white;</span><br><span class="line">        &#125;</span><br><span class="line">        #third&#123;</span><br><span class="line">            width: 50px;</span><br><span class="line">            height: 50px;</span><br><span class="line">            border:thin solid red;</span><br><span class="line">        &#125;</span><br><span class="line">        #second&#123;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 100px;</span><br><span class="line">            border:thin solid red;</span><br><span class="line">        &#125;</span><br><span class="line">        #first&#123;</span><br><span class="line">            width:200px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            border:thin solid red;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;first&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;second&quot; &gt;</span><br><span class="line">            &lt;div id=&quot;third&quot; &gt;</span><br><span class="line">                &lt;button id=&quot;button&quot;&gt;事件冒泡&lt;/button&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line"></span><br><span class="line">        document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;button&quot;);</span><br><span class="line">        &#125;,true);</span><br><span class="line"></span><br><span class="line">        document.getElementById(&quot;third&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;third&quot;);</span><br><span class="line">        &#125;,true);</span><br><span class="line"></span><br><span class="line">        document.getElementById(&quot;second&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;second&quot;);</span><br><span class="line">        &#125;,true);        </span><br><span class="line"></span><br><span class="line">        document.getElementById(&quot;first&quot;).addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">            alert(&quot;first&quot;);</span><br><span class="line">        &#125;,true);</span><br><span class="line"></span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://images2015.cnblogs.com/blog/1044137/201612/1044137-20161207090444788-1400193554.gif" target="_blank" rel="external">示例图点击可看</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">document</span><br><span class="line">&lt;html&gt;&lt;/html&gt;</span><br><span class="line">&lt;body&gt;&lt;/body&gt;</span><br><span class="line">&lt;div id=&quot;first&quot; &gt;&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;second&quot; &gt;&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;third&quot; &gt;&lt;/div&gt;</span><br><span class="line">&lt;button id=&quot;button&quot;&gt;&lt;/button&gt;可以清楚的看出事件的发生顺序从上之下逐级发生</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="学习无止尽，努力吧，骚年！"><a href="#学习无止尽，努力吧，骚年！" class="headerlink" title="学习无止尽，努力吧，骚年！"></a>学习无止尽，努力吧，骚年！</h1>
       
     </div>
     
@@ -358,8 +358,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/06/js算法题/" rel="next" title="js算法题(一)">
-                <i class="fa fa-chevron-left"></i> js算法题(一)
+              <a href="/2018/03/06/事件流/" rel="next" title="事件流">
+                <i class="fa fa-chevron-left"></i> 事件流
               </a>
             
           </div>
@@ -367,10 +367,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/06/事件流/" rel="prev" title="事件流">
-                事件流 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -486,7 +482,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#我身在何处？"><span class="nav-number">1.</span> <span class="nav-text">我身在何处？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事件流之事件捕获"><span class="nav-number">1.</span> <span class="nav-text">事件流之事件捕获</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习无止尽，努力吧，骚年！"><span class="nav-number">2.</span> <span class="nav-text">学习无止尽，努力吧，骚年！</span></a></li></ol></div>
             
 
           </div>
