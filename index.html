@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            Über
           </a>
         </li>
       
@@ -203,7 +203,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -213,7 +213,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -236,6 +236,163 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/css技巧4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张大欣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bobbyzhangxin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/13/css技巧4/" itemprop="url">css技巧4</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T20:45:57+08:00">
+                2018-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="常用的css技巧"><a href="#常用的css技巧" class="headerlink" title="常用的css技巧"></a>常用的css技巧</h1><p>好久没更博了，最近一直在忙着复习考研的事，也在积极准备春招的事，可以说忙的像个闲人，最近在头条看了一篇关于21个CSS技巧的文章觉得挺好的，分享给大家(虽然台下的观众就我一个，哈哈哈)</p>
+<h2 id="运用css复位"><a href="#运用css复位" class="headerlink" title="运用css复位"></a>运用css复位</h2><p>CSS复位能够在不同的浏览器上坚持共同的款式风格，你可以选择CSS reset库等，也可以运用一个简单的复位方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">	box-sizing:border-box;</span><br><span class="line">	margin:0;</span><br><span class="line">	padding:0;</span><br><span class="line">	//box-sizing能够管理你的CSS盒模型布局</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="继承box-sizing"><a href="#继承box-sizing" class="headerlink" title="继承box-sizing"></a>继承box-sizing</h2><p>(box-sizing)[<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing</a>]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">html&#123;</span><br><span class="line">	box-sizing:border-box;</span><br><span class="line">&#125;</span><br><span class="line">*,*:before,*:after&#123;</span><br><span class="line">	box-sizing:inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="运用：not-选择器来决定表单是否显现边框"><a href="#运用：not-选择器来决定表单是否显现边框" class="headerlink" title="运用：not()选择器来决定表单是否显现边框"></a>运用：not()选择器来决定表单是否显现边框</h2><p>(更多选择器方式)[<a href="http://www.w3school.com.cn/cssref/css_selectors.asp" target="_blank" rel="external">http://www.w3school.com.cn/cssref/css_selectors.asp</a>]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.nav li:last-child&#123;</span><br><span class="line">	border-right:none;</span><br><span class="line">&#125;</span><br><span class="line">.nav li:not(:last-child)&#123;</span><br><span class="line">	border-right:1px solid #666;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="为body元素增加行高"><a href="#为body元素增加行高" class="headerlink" title="为body元素增加行高"></a>为body元素增加行高</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body&#123;</span><br><span class="line">	line-height:1.5;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运用max-height与overflow-hidden一同来树立纯CSS滑块"><a href="#运用max-height与overflow-hidden一同来树立纯CSS滑块" class="headerlink" title="运用max-height与overflow:hidden一同来树立纯CSS滑块"></a>运用max-height与overflow:hidden一同来树立纯CSS滑块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.slider&#123;</span><br><span class="line">		max-height: 600px;</span><br><span class="line">		overflow-y:hidden;</span><br><span class="line">		width: 30px;</span><br><span class="line">	&#125;</span><br><span class="line">	.slider:hover&#123;</span><br><span class="line">		max-height: 800px;</span><br><span class="line">		overflow-x: scroll;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="发明格子等宽的表格"><a href="#发明格子等宽的表格" class="headerlink" title="发明格子等宽的表格"></a>发明格子等宽的表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.calendar&#123;</span><br><span class="line">	table-layout:fixed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-cmn-Hans&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot; /&gt;</span><br><span class="line">&lt;title&gt;table-layout属性fixed和auto的区别&lt;/title&gt;</span><br><span class="line">&lt;meta name=&quot;author&quot; content=&quot;&quot; /&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">h1&#123;font-size:16px;font-family:Arial;&#125;</span><br><span class="line">.auto&#123;table-layout:auto;width:350px;&#125;</span><br><span class="line">.fixed&#123;table-layout:auto;width:350px;&#125;</span><br><span class="line">.fixed td&#123;width:300px;&#125;</span><br><span class="line">.auto td&#123;width:200px;&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;auto: 表格自动算法&lt;/h1&gt;</span><br><span class="line">&lt;table border=&quot;1&quot; class=&quot;auto&quot;&gt;</span><br><span class="line">&lt;tbody&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;表格自动算法，宽度将基于单元格的内容自动拉伸&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;表格自动算法&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;表格自动算法&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;表格自动算法&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;表格自动算法&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;表格自动算法&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;fixed: 表格固定算法&lt;/h1&gt;</span><br><span class="line">&lt;table border=&quot;1&quot; class=&quot;fixed&quot;&gt;</span><br><span class="line">&lt;tbody&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;表格固定算法布局&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;表格固定算法&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;表格固定算法&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;表格固定算法&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;表格固定算法&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;表格固定算法&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>相同点：</p>
+<p>如果表格都没有设定宽高属性，那么不管是auto或者fixed属性、表格宽度高度则为单元格宽高（包括一些padding、border属性等）累积的总和。</p>
+<p>不同点：</p>
+<p>auto属性：</p>
+<p>当设置为auto属性，也就是table-layout属性的时候，如果表格设置了width属性height属性，那么表格的宽度和高度就是设置的值。不管你是否设置了单元格的高宽值，表格的高宽都已经限定了！如果没有设定，那么表格宽度高度则为单元格宽高（包括一些padding、border属性等）累积的总和。</p>
+<p>fixed属性：</p>
+<p>但是当设置了fixed属性的时候，如果表格设置了width属性height属性，如果设置的单元格宽高累加起来的总和比表格设置的宽高总和要大，那么表格的实际宽高就为每个单元格宽高累积的总和，但是如果单元格累积的总和比表格自己设计的要小，那么表格的宽高属性则为表格设置的宽高值。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -279,7 +436,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-09T22:06:27+08:00">
                 2018-03-09
@@ -300,7 +457,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -423,7 +580,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T21:21:17+08:00">
                 2018-03-07
@@ -444,7 +601,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -568,7 +725,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T23:18:38+08:00">
                 2018-03-06
@@ -589,7 +746,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -715,7 +872,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T20:41:14+08:00">
                 2018-03-06
@@ -736,7 +893,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -860,7 +1017,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T18:47:20+08:00">
                 2018-03-06
@@ -881,7 +1038,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1012,7 +1169,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-05T12:07:55+08:00">
                 2018-03-05
@@ -1033,7 +1190,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1161,7 +1318,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-04T21:31:11+08:00">
                 2018-03-04
@@ -1182,7 +1339,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1310,7 +1467,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-03T10:48:22+08:00">
                 2018-02-03
@@ -1331,7 +1488,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1458,7 +1615,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-01T16:44:22+08:00">
                 2018-02-01
@@ -1479,7 +1636,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1529,153 +1686,6 @@
 <hr>
 <p>做标签栏的时候经常会用到display：<br>    inline:<br>        使元素变成行内元素，拥有行内元素的特性，即可以与其他行内元素共享一行，不会独占一行.<br>        不能更改元素的height，width的值，大小由内容撑开.<br>        可以使用padding，margin的left和right产生边距效果，但是top和bottom就不行.<br>    block:<br>        使元素变成块级元素，独占一行，在不设置自己的宽度的情况下，块级元素会默认填满父级元素的宽度.<br>        能够改变元素的height，width的值.<br>        可以设置padding，margin的各个属性值，top，left，bottom，right都能够产生边距效果.<br>     inline-block:<br>        结合了inline与block的一些特点，结合了上述inline的第1个特点和block的第2,3个特点.<br>        用通俗的话讲，就是不独占一行的块级元素。</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://img.mukewang.com/539a950e00015ba500710200.jpg" alt="图片资源"></h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/01/css3技巧2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张大欣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bobbyzhangxin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/01/css3技巧2/" itemprop="url">css3技巧2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-01T13:56:53+08:00">
-                2018-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前面介绍了CSS3的一些基本动画操作，今天来讲一个animation<br>animation 属性是一个简写属性，用于设置六个动画属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">animation-name:绑定的名称</span><br><span class="line">animation-duration：规定动画所需时间</span><br><span class="line">animation-timing-function规定速度曲线（类似transition的过度缓冲类型）：</span><br><span class="line">animation-delay：延迟</span><br><span class="line">animation-iteration-count：规定播放次数</span><br><span class="line">animation-direction：是否轮流反向</span><br></pre></td></tr></table></figure></p>
-<p>html部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;img src=&quot;2.jpg&quot; class=&quot;spinner&quot;&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></p>
-<p>css部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">body&#123;</span><br><span class="line">            color: #222;</span><br><span class="line">            background-color: black;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        .spinner&#123;</span><br><span class="line">            width: 400px;</span><br><span class="line">            height: 400px;</span><br><span class="line">            background-color: white;</span><br><span class="line">            border-radius: 50%;</span><br><span class="line">            margin: auto;</span><br><span class="line">            -webkit-animation: fadeOut 1.0s infinite ease-in-out;</span><br><span class="line">            animation: fadeOut 1.0s infinite ease-in-out;</span><br><span class="line">        &#125;</span><br><span class="line">        @-webkit-keyframes fadeOut &#123;</span><br><span class="line">           from&#123;-webkit-transform: scale(0.0);&#125;</span><br><span class="line">            to&#123;  -webkit-transform: scale(1.0);opacity: 0;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        @keyframes fadeOut &#123;</span><br><span class="line">            from&#123;transform: scale(0.0);&#125;</span><br><span class="line">            to&#123;transform: scale(1.0);opacity: 0;&#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>如上所示：为图片设置样式之后，为其设置一个fadeOut的animation name,infinite指无限播放，设置成具体数值就是指具体的执行次数，ease-in-out指动画展示由慢到快在到慢。from{}to{}就表示从什么状态到什么状态。</p>
-
           
         
       
@@ -1761,8 +1771,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -1773,7 +1783,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 </a>
               </div>
             
