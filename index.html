@@ -250,6 +250,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/JS中call-apply-bind的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张大欣">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bobbyzhangxin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/24/JS中call-apply-bind的区别/" itemprop="url">JS中call() apply() bind()的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-24T21:58:14+08:00">
+                2018-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JS中call-apply-bind-的区别"><a href="#JS中call-apply-bind-的区别" class="headerlink" title="JS中call() apply() bind()的区别"></a>JS中call() apply() bind()的区别</h1><p>看过一个段子：猫吃鱼，狗吃肉，奥特曼打小怪兽。<br>有天狗想吃鱼了，猫.吃鱼.call(狗，鱼)<br>狗就吃到鱼了<br>猫成精了，想打怪兽<br>奥特曼.打小怪兽.call(猫，小怪兽)<br>就这样记住了。</p>
+<h2 id="call-apply-bind干什么的？就是为了改变函数体内部-this-的指向"><a href="#call-apply-bind干什么的？就是为了改变函数体内部-this-的指向" class="headerlink" title="call,apply,bind干什么的？就是为了改变函数体内部 this 的指向"></a>call,apply,bind干什么的？就是为了改变函数体内部 this 的指向</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a =&#123;</span><br><span class="line">	user:&quot;zhangxin&quot;,</span><br><span class="line">	show:function()&#123;</span><br><span class="line">		console.log(this.user);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">a.show();//zhangxin</span><br></pre></td></tr></table></figure>
+<h2 id="通过call方法，给第一个参数添加到把b添加到相应的环境中，使this指向相应的对象"><a href="#通过call方法，给第一个参数添加到把b添加到相应的环境中，使this指向相应的对象" class="headerlink" title="通过call方法，给第一个参数添加到把b添加到相应的环境中，使this指向相应的对象"></a>通过call方法，给第一个参数添加到把b添加到相应的环境中，使this指向相应的对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a =&#123;</span><br><span class="line">	user:&quot;zhangxin&quot;,</span><br><span class="line">	show:function()&#123;</span><br><span class="line">		console.log(this.user);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">var b = a.show;</span><br><span class="line">b.call(a);//zhangxin</span><br></pre></td></tr></table></figure>
+<p>call方法除了第一个参数以外还可以添加多个参数，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var a =&#123;</span><br><span class="line">	user:&quot;zhangxin&quot;,</span><br><span class="line">	majiang:function(n,m)&#123;</span><br><span class="line">		console.log(this.user);</span><br><span class="line">		console.log(n+m)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">var b = a.show;</span><br><span class="line">b.call(a,1,2);</span><br><span class="line">//zhangxin </span><br><span class="line">//3</span><br></pre></td></tr></table></figure></p>
+<h2 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h2><p>apply和call的区别在于apply()语法与call()方法的语法几乎完全相同，唯一的区别在于，apply的第二个参数必须是一个包含多个参数的数组（或类数组对象）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a =&#123;</span><br><span class="line">	user:&quot;zhangxin&quot;,</span><br><span class="line">	show:function()&#123;</span><br><span class="line">		console.log(this.user);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">var b= a.show;</span><br><span class="line">b.apply(a);</span><br></pre></td></tr></table></figure></p>
+<p>同样apply也可以有多个参数，但是不同的是，第二个参数必须是一个数组，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var a =&#123;</span><br><span class="line">	user:&quot;zhangxin&quot;,</span><br><span class="line">	show:function(n,m)&#123;</span><br><span class="line">		console.log(this.user);</span><br><span class="line">		console.log(n+m);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">var b= a.show;</span><br><span class="line">b.apply(a,[2,4]);</span><br><span class="line">//zhangxin</span><br><span class="line">//6</span><br></pre></td></tr></table></figure></p>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;</span><br><span class="line">    user:&quot;zhanxgin&quot;,</span><br><span class="line">    fn:function(n,m)&#123;</span><br><span class="line">        console.log(this.user); </span><br><span class="line">        console.log(n,m); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var b = a.fn;</span><br><span class="line">var arr = [500,20];</span><br><span class="line">b.apply(a,arr);</span><br><span class="line">//zhangxin</span><br><span class="line">//520</span><br></pre></td></tr></table></figure></p>
+<p>如果call和apply的第一个参数是null，那么this指向的是windows对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;</span><br><span class="line">    user:&quot;追梦子&quot;,</span><br><span class="line">    fn:function()&#123;</span><br><span class="line">        console.log(this); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var b = a.fn;</span><br><span class="line">b.apply(null);</span><br></pre></td></tr></table></figure></p>
+<h2 id="bind与apply、call最大的区别就是bind不会立即调用，其他两个会立即调用"><a href="#bind与apply、call最大的区别就是bind不会立即调用，其他两个会立即调用" class="headerlink" title="bind与apply、call最大的区别就是bind不会立即调用，其他两个会立即调用"></a>bind与apply、call最大的区别就是bind不会立即调用，其他两个会立即调用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var button =document.getElementById(&apos;button&apos;),</span><br><span class="line">text= document.getElementById(&apos;text&apos;);</span><br><span class="line">button.onclcik=function()&#123;</span><br><span class="line">	alert(this.id);</span><br><span class="line">&#125;.bind(text);</span><br></pre></td></tr></table></figure>
+<p>bind是只有点击button的时候，才会调用函数而相反的call和apply会立即调用</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/名词解释/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1582,155 +1734,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/04/你不知道的事/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张大欣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bobbyzhangxin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/04/你不知道的事/" itemprop="url">你不知道的事</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-04T21:31:11+08:00">
-                2018-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/金融/" itemprop="url" rel="index">
-                    <span itemprop="name">金融</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="终于有人把P2P-020-B2B-C2C搞清楚了"><a href="#终于有人把P2P-020-B2B-C2C搞清楚了" class="headerlink" title="终于有人把P2P,020,B2B,C2C搞清楚了"></a>终于有人把P2P,020,B2B,C2C搞清楚了</h1><hr>
-<h1 id="你是不是和我一样傻傻分不清楚，当别人问到的时候一脸懵逼，两眼无助，三毛树立，四肢乏力，没关系，我在头条新闻看见一个解释的挺好的短片，我将它文字化展示在这里，希望大家明白"><a href="#你是不是和我一样傻傻分不清楚，当别人问到的时候一脸懵逼，两眼无助，三毛树立，四肢乏力，没关系，我在头条新闻看见一个解释的挺好的短片，我将它文字化展示在这里，希望大家明白" class="headerlink" title="你是不是和我一样傻傻分不清楚，当别人问到的时候一脸懵逼，两眼无助，三毛树立，四肢乏力，没关系，我在头条新闻看见一个解释的挺好的短片，我将它文字化展示在这里，希望大家明白"></a>你是不是和我一样傻傻分不清楚，当别人问到的时候一脸懵逼，两眼无助，三毛树立，四肢乏力，没关系，我在头条新闻看见一个解释的挺好的短片，我将它文字化展示在这里，希望大家明白</h1><h2 id="P2P–peer-to-peer"><a href="#P2P–peer-to-peer" class="headerlink" title="P2P–peer to peer"></a>P2P–peer to peer</h2><p>P2P借贷指个人通过第三方平台(P2P公司)在收取一定服务费用的前提下把钱借给有资金需求的人的一种金融模式<br>有两种模式:<br> 1.纯线上模式：纯粹的进行个人信息的匹配帮助资金借贷双方更好的进行资金匹配，但是这种线上模式并不参与担保，存在一定风险<br> 2.债权转账模式：平台本身先放贷，再将债权放到平台进行转让，可以明显的提高企业融资端的效率，但是容易引起资金池不能充分发挥资金效益</p>
-<h2 id="O2O–online-to-offline"><a href="#O2O–online-to-offline" class="headerlink" title="O2O–online to offline"></a>O2O–online to offline</h2><p>1.O2O是指将线下商务的机会与互联网结合起来，让互联网成为线下交易的前台，同时享受线上优惠的价格，又享受线下贴切的服务，完美结合网上网下的优势，实现互联网落地<br>2.O2O还可以多家商家进行联盟，O2O的核心是进行在线预支付，标志着某次消费得以最终形成，也是消费数据唯一可靠的考核标准，对于提供O2O服务的公司，只有用户进行了线上支付，自身才能从中获取效益</p>
-<h2 id="B2C–business-to-customer"><a href="#B2C–business-to-customer" class="headerlink" title="B2C–business to customer"></a>B2C–business to customer</h2><p>1.B2C是指以网络零售业为主，借助互联网开展在线销售活动，直接面向消费者销售产品和服务，通过服务为客户提供一个新的购物环境<br>2.网站分为三部分，在线购物场所，配送物品系统，顾客身份的认证系统及贷款结算的银行<br>3.B2C的代表网站有<a href="https://pages.tmall.com/" target="_blank" rel="external">天猫</a>(为人服务作平台)，<a href="http://www.vancl.com/" target="_blank" rel="external">凡客</a>(自产自销做品牌)，<a href="https://www.jd.com/" target="_blank" rel="external">京东</a>(自营为主电商平台)</p>
-<h2 id="B2B（企业对企业的电子商务模式），也有写成BTB，"><a href="#B2B（企业对企业的电子商务模式），也有写成BTB，" class="headerlink" title="B2B（企业对企业的电子商务模式），也有写成BTB，"></a>B2B（企业对企业的电子商务模式），也有写成BTB，</h2><p>1.是指企业对企业之间的营销关系，它将企业内部网，通过B2B网站与客户紧密结合起来，通过网络的快速反应，为客户提供更好的服务，从而促进企业的业务发展(Business Development)近年来B2B发展势头迅猛，趋于成熟。<br>2.B2B是指进行电子商务交易的供需双方都是商家（或企业、公司），她（他）们使用了互联网的技术或各种商务网络平台，完成商务交易的过程。电子商务是现代B2Bmarketing的一种具体主要的表现形式。<br>含有三要素：</p>
-<p>3.买卖：B2B网站平台为消费者提供质优价廉的商品，吸引消费者购买的同时促使更多商家的入驻。<br>4.合作：与物流公司建立合作关系，为消费者的购买行为提供最终保障，这是B2B平台硬性条件之一。<br>5.服务：物流主要是为消费者提供购买服务，从而实现再一次的交易。<br>代表网站<br>B2B网站排名<br>阿里巴巴<br>慧聪网<br>中国供应商<br>世界工厂网</p>
-<h2 id="C2C的概念"><a href="#C2C的概念" class="headerlink" title="C2C的概念"></a>C2C的概念</h2><p>c2c实际是电子商务的专业用语，是个人与个人之间的电子商务。c2c即消费者间 ，因为英文中的2的发音同to，所以c to c简写为c2c。c指的是消费者，因为消费者的英文单词是Customer（Consumer），所以简写为c，而C2C即 Customer（Consumer） to Customer（Consumer）。C2C的意思就是个人与个人之间的电子商务。比如一个消费者有一台电脑，通过网络进行交易，把它出售给另外一个消费者，此种交易类型就称为C2C电子商务。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1781,7 +1784,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
